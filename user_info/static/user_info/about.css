@@ -1,0 +1,129 @@
+/* --- Root Variables for Consistent Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --text-color: #333;
+  --text-light: #6c757d;
+  --card-bg: #ffffff;
+  --border-radius-lg: 12px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --transition-speed: 0.3s ease;
+}
+
+/* --- Page Header/Banner --- */
+header {
+  background: linear-gradient(45deg, var(--primary-color), #0056b3);
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+  margin-bottom: 3rem;
+  border-radius: 0 0 20px 20px;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Main Content Container --- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container h2 {
+  font-size: 2.2rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+/* Creates an underline effect for headings */
+.container h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.container p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 3.5rem auto; /* More space after paragraphs */
+}
+
+/* --- "Meet the Team" Section --- */
+.team {
+  display: grid;
+  /* Creates a responsive grid for team members */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.member {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  padding: 2rem;
+  /* 🎨 Smooth transition for interactive effects */
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* 🎨 Interactive hover effect for the team member card */
+.member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  transition: transform var(--transition-speed);
+}
+
+/* 🎨 Interactive hover effect for the image */
+.member:hover img {
+  transform: scale(1.05);
+}
+
+.member h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.member p {
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.8rem;
+  }
+  .container h2 {
+    font-size: 1.8rem;
+  }
+}

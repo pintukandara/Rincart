@@ -1,0 +1,30 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}Register Here!{% endblock title %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'user_info/registration.css' %}">
+<script src="{% static 'user_info/login.js' %}"></script>
+{% endblock extra_head %}
+{% block content %}
+<div class = "registration-form">
+    <h2>Sign Up!</h2>
+<form method="post" class = "registration-form" >
+{% csrf_token %}
+{{ form.as_p }}
+
+  <button type="submit">Register</button>
+
+   <p class="login-account">Already have an account? <a href="{% url "login" %}">login</a></p>
+</form>
+{% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endif %}      
+</div>
+
+    {% endblock content %}
+
+    

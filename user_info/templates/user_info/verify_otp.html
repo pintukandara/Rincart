@@ -1,0 +1,22 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+
+{% block title %}Verify Your Account{% endblock title %}
+
+{% block extra_head %}
+{# We'll create a new CSS file for this page for clarity #}
+<link rel="stylesheet" href="{% static 'user_info/otp_verify.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="form-container">
+  <h2>Enter Verification Code</h2>
+  <p class="info-text">A 6-digit code has been sent to your email address.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Verify OTP</button>
+  </form>
+</div>
+{% endblock content %}

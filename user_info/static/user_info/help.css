@@ -1,0 +1,125 @@
+/* --- Root Variables for Consistent Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --text-color: #333;
+  --text-light: #6c757d;
+  --border-color: #ddd;
+  --card-bg: #ffffff;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --success-bg: #d4edda;
+  --success-text: #155724;
+  --success-border: #c3e6cb;
+}
+
+/* --- Main Page Heading --- */
+.help {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 2rem 0 3rem 0;
+}
+
+/* --- Form Container --- */
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto 4rem auto; /* Center the container with bottom margin */
+  padding: 2.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.contact-form-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+/* --- Form Elements --- */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🎨 Interactive focus effect for input fields */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* --- Submit Button --- */
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* 🎨 Interactive hover effect for the button */
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+/* --- Django Messages Styling --- */
+/* This styles the <p> tags from your message loop */
+.contact-form-container > p {
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid var(--success-border);
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+.messages { margin-top: 1.5rem; }
+.messages p {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid transparent;
+}
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+.messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}

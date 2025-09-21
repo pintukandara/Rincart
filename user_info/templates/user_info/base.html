@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}RinCart{% endblock title %}</title>
+    
+    <!-- Link to the CSS file -->
+     <link rel="icon" type="image/x-icon" href="{% static "user_info/icon.png" %}">
+    <link rel="stylesheet" href="{% static 'user_info/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header-section">
+      <nav class="nav-bar">
+        <div class="logo-container">
+          <img
+            src="{% static 'user_info/logo.png' %}"
+            alt="Logo"
+            class="logo"
+          />
+          <h1>RinCart</h1>
+        </div>
+
+        <form method="GET" action="{% url 'search_result' %}" class="search-form">
+          <div class="search-container">
+            <input type="search" name="query" placeholder="Search for products..." />
+            <button type="submit" class="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <div class="navigation-section">
+          <a href="{% url 'homepage' %}">Home</a>
+          <a href="{% url 'buy' %}">Buy</a>
+          <a href="{% url 'sell' %}">Sell</a>
+          <a href="{% url 'about' %}">About</a>
+          <a href="{% url 'help' %}">Help</a>
+          <a href="{% url 'order-placed' %}">My Orders</a>
+          <a href="{% url 'cart_view' %}" class="cart-link" aria-label="View Shopping Cart">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+          
+          
+          {% if user.is_authenticated %}
+          <div class="user-actions">
+            <p class="user_name">Welcome, {{ user.username }}!</p>
+
+            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+          </div>
+          {% else %}
+          <div class="user-actions">
+            <button class="sign-up-button">Sign Up</button>
+            <button class="sign-in-button">Sign In</button>
+          </div>
+          {% endif %}
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+      </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %} 
+        <!-- Default content can go here if needed -->
+        {% endblock content %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="page-footer">
+      <div class="footer-content">
+        <h2>RinCart</h2>
+        <p>Buy & Sell Pre-Loved Goods With Ease</p>
+
+        <nav class="footer-links must-read">
+          <a href="/about">About Us</a> | <a href="/help">Contact</a> |
+          <a href="/terms">Terms</a> |
+          <a href="/privacy">Privacy</a>
+        </nav>
+
+        <div class="social-links connect">
+          Follow us:
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <p class="copyright">&copy; 2025 RinCart. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="{% static 'user_info/base.js' %}"></script>
+  </body>
+</html>

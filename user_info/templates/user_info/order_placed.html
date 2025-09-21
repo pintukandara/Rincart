@@ -1,0 +1,71 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}Order Placed {% endblock title %}
+{% block extra_head %}
+<link rel = "stylesheet" href = "{% static "user_info/order_placed.css" %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="content-wrapper">
+<h1 class = 'order-confirmation'>Thank You For Your Order! ✅</h1>
+    <p class="subtitle">Your order has been placed successfully. A confirmation email has been sent.</p>
+    
+    <div class="order-details-grid"> 
+    <section class="card shipping-address-card">
+            <h2>Shipping To</h2>
+            <p class = "city">{{ address.city }}</p>
+            <p class = "state">{{ address.state }}, {{ address.pincode }}</p>
+        </section>
+
+    <section class="items-purchased-card">
+            <h2 class = "item-buyed">Items Purchased</h2>
+            {% for item in order_items %}
+            <h2 class = 'order-id'>Order Summary (ID: #{{ item.razorpay_order_id}})</h2>
+        <div class="summary-details">
+            <p><strong>Order Placed On:</strong> {{ item.created_at|date:"F j, Y" }}</p>
+            <p><strong>Order Total:</strong> ₹{{ item.amount }}</p>
+        </div>
+
+            <article class="product-card">
+                
+                {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" class="product-image">
+                {% endif %}
+                <div class="product-info">
+                    <h3 class="title"><a href="{{ item.product.get_absolute_url }}">{{ item.product.title }}</a></h3>
+                    <p class="price">Price: ₹{{ item.product.price }}</p>
+                    
+                    <p class="seller">Sold by:
+                        {% if item.product.posted_by.seller_profile %}
+                            <a href="{% url 'seller_profile' item.product.posted_by.seller_profile.slug %}" class = "seller-profile">
+                                {{ item.product.posted_by.username }}
+                            </a>
+                        {% else %}
+                            {{ item.product.posted_by.username }}
+                        {% endif %}
+                    </p>
+                    <form method ="POST" action = {% url "cancel-item" item.razorpay_order_id %} class = "cancel-form">
+                        {% csrf_token %}
+
+                    <button class = "cancel-order" >Cancel item</button>
+                    </form>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+
+    <div class = "message-alert">
+{% for message in messages %}
+<p>{{message}}</p>
+{% endfor %}
+    </div>
+
+    
+
+
+{% endblock content %}
+
+

@@ -1,0 +1,87 @@
+/* --- Root Variables for Consistent Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --text-color: #333;
+  --text-light: #6c757d;
+  --border-color: #ddd;
+  --card-bg: #ffffff;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Main Form Container --- */
+.form-container {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 450px;
+  width: 100%;
+  margin: 4rem auto; /* Centers the form with vertical space */
+}
+
+/* --- Heading & Informational Text --- */
+.form-container h2 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.form-container .info-text {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+/* --- Styling for Django's form.as_p output --- */
+.form-container form p {
+  margin-bottom: 1.5rem;
+}
+
+.form-container label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+/* --- Special Styling for OTP Input --- */
+.form-container input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1.5rem; /* Makes the numbers larger and easier to read */
+  text-align: center; /* Centers the OTP code */
+  letter-spacing: 0.5em; /* Adds space between the digits */
+  font-family: "Poppins", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Interactive focus effect */
+.form-container input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Submit Button --- */
+.form-container button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+}

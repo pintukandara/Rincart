@@ -1,0 +1,97 @@
+/* Import a clean, readable font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* Define a color palette for easy customization */
+:root {
+    --primary-color: #007BFF; /* A professional blue */
+    --secondary-color: #343a40; /* Dark gray for text */
+    --background-color: #f8f9fa; /* Light gray page background */
+    --container-bg: #ffffff; /* White for the content card */
+    --border-color: #dee2e6; /* Light border color */
+}
+
+/* Apply base styles to the body */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+/* Style the main content container */
+.terms-container {
+    max-width: 50rem; /* 800px */
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: var(--container-bg);
+    border-radius: 16px; /* Softer rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* A subtle, modern shadow */
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.terms-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* --- Typography --- */
+
+/* Main Page Title (h1) */
+h1 {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Section Titles (h2) */
+h2 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Paragraph Text */
+p {
+    margin-bottom: 1rem;
+    color: #555; /* Slightly lighter gray for body text */
+}
+
+/* --- Links --- */
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}

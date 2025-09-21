@@ -1,0 +1,237 @@
+/* --- Root Variables for Consistent Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d;
+  --text-color: #333;
+  --border-color: #ddd;
+  --card-bg: #ffffff;
+  --error-color: #dc3545;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Profile Call-to-Action (CTA) --- */
+.profile-cta {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+.profile-cta a {
+  text-decoration: none;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+.profile-cta .btn-primary { background-color: var(--primary-color); }
+.profile-cta .btn-secondary { background-color: var(--secondary-color); }
+.profile-cta a:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+
+/* --- Main Page Layout --- */
+.sell-page-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 2.5rem;
+  align-items: start;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+/* --- "Your Products" Section --- */
+.my-products-section ul {
+  list-style: none;
+  padding: 0;
+}
+.product-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+.product-card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+.product-card > a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem;
+  display: block;
+}
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
+.product-card .title {
+  font-size: 1.4rem;
+  border: none;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+.product-card .price {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.product-actions {
+  display: flex;
+  background-color: #f8f9fa;
+  border-top: 1px solid var(--border-color);
+}
+.product-actions a {
+  flex: 1;
+  text-align: center;
+  padding: 0.8rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+/* Main container for the buttons */
+.product-actions {
+  display: flex; /* Aligns buttons in a row */
+  gap: 10px;     /* Adds space between the buttons */
+  align-items: center;
+}
+
+/* Base styles for both buttons */
+.product-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* Style for the 'Edit' button */
+.edit-btn {
+  background-color: #3498db; /* Blue */
+}
+
+.edit-btn:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Style for the 'Delete' button */
+.delete-btn {
+  background-color: #e74c3c; /* Red */
+}
+
+.delete-btn:hover {
+  background-color: #c0392b; /* Darker red on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+
+.empty-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+/* --- "Sell Your Product" Form Section --- */
+.sell-form-section {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  position: sticky; /* Form stays in view on scroll */
+  top: 90px;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.sell-form input,
+.sell-form textarea,
+.sell-form select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+.sell-form input:focus,
+.sell-form textarea:focus,
+.sell-form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+.sell-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Custom File Input */
+.sell-form input[type="file"] {
+  border: 1px dashed var(--border-color);
+  padding: 1rem;
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+.sell-form input[type="file"]::file-selector-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.sell-form input[type="file"]::file-selector-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .sell-page-layout {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+  .sell-form-section {
+    position: static; /* Remove sticky positioning */
+  }
+}

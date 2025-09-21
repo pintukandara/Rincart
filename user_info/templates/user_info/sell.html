@@ -1,0 +1,94 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+
+{% block title %}Sell & Manage Your Products{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'user_info/sell.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+{# ✨ Improvement: A clear call-to-action for the profile #}
+<div class="profile-cta">
+  {% if request.user.seller_profile %}
+    <a href="{% url 'create-profile' %}" class="btn-secondary">Update Your Seller Profile</a>
+  {% else %}
+    <a href="{% url 'create-profile' %}" class="btn-primary">Complete Your Profile to Start Selling</a>
+  {% endif %}
+</div>
+
+{# ✨ Improvement: A main layout container for a two-column design #}
+<div class="sell-page-layout">
+
+  <div class="my-products-section">
+    <h2>Your Products</h2>
+    <ul>
+      {% for product in my_products %}
+      <li>
+        <article class="product-card">
+          {# This part is mostly the same #}
+          <a href="{{ product.get_absolute_url }}">
+            <h2 class="title">{{ product.title }}</h2>
+            <p class="description">{{ product.description|truncatewords:20 }}</p>
+            <p class="price">Price: ₹{{ product.price }}</p>
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.title }}">
+            {% endif %}
+          </a>
+          
+          {# ✨ Improvement: A dedicated container for action buttons #}
+          <div class="product-actions">
+            <form method = "GET" action = "{% url "edit_item" product.id %}">
+            <button class="edit-btn">Edit</button>
+            </form>
+            <form method = "POST" action = "{% url "delete_item" product.id %}">
+              {% csrf_token %}
+            <button  class="delete-btn">Delete</button>
+            </form>
+          </div>
+        </article>
+      </li>
+      {% empty %}
+      <li class="empty-message">You haven't posted any products yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="sell-form-section">
+    <h2>Sell Your Product</h2>
+    <form class="sell-form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      {# ✨ Improvement: Grouping each field for better styling #}
+      <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Product Title</label>
+        {{ form.title }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.description.id_for_label }}">Description</label>
+        {{ form.description }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.price.id_for_label }}">Price (₹)</label>
+        {{ form.price }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Category</label>
+        {{ form.category }}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.image.id_for_label }}">Product Image</label>
+        {{ form.image }}
+      </div>
+
+      <button type="submit" class="submit-btn">Post Ad</button>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

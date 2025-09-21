@@ -1,0 +1,309 @@
+/* --- Root Variables for Consistent Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d;
+  --text-color: #333;
+  --text-light: #6c757d;
+  --border-color: #e9ecef;
+  --background-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --box-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+  --transition-speed: 0.3s ease;
+}
+
+/* --- Main Cart Container & Heading --- */
+.cart-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.cart-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 2.5rem;
+}
+
+/* --- Cart Layout (Items + Summary) --- */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Cart items take 2/3, summary takes 1/3 */
+  gap: 2rem;
+  align-items: start; /* Align items to the top of the grid */
+}
+
+/* --- Cart Items Section --- */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Individual Cart Item Card --- */
+.cart-item {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* 🎨 Interactive hover effect for cart items */
+.cart-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.item-image a {
+    display: block;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform var(--transition-speed);
+}
+
+.item-image a:hover {
+    transform: scale(1.05); /* Slight zoom on image hover */
+}
+
+.item-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  display: block; /* Remove extra space below image */
+}
+
+.item-details {
+  flex-grow: 1; /* Allows details to take up remaining space */
+}
+
+.item-details h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.item-details h3 a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color var(--transition-speed);
+}
+
+/* 🎨 Product title link hover */
+.item-details h3 a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+
+.item-details .item-price,
+.item-details .item-quantity {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.item-total {
+    text-align: right; /* Align total price to the right */
+}
+
+.item-total p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+/* --- Remove Item Button --- */
+.item-actions {
+  display: flex;
+  align-items: center;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+  padding: 0 0.5rem;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+/* 🎨 Remove button hover */
+.remove-btn:hover {
+  color: var(--error-color, #dc3545); /* Red for error/delete */
+  transform: scale(1.1);
+}
+
+/* --- Cart Summary Section --- */
+.cart-summary {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  position: sticky; /* Keeps summary visible when scrolling cart items */
+  top: 90px; /* Adjust based on header height */
+}
+
+.cart-summary h3 {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.summary-line span:last-child {
+  font-weight: 500;
+}
+
+.cart-summary hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 1.5rem 0;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* --- Checkout Button --- */
+.checkout-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* 🎨 Checkout button hover */
+.checkout-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.25);
+}
+
+.checkout-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* --- Empty Cart Message Styling --- */
+.cart-empty {
+  grid-column: 1 / -1; /* Make it span across both columns */
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  padding: 4rem 1rem;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: #fafafa;
+}
+
+.cart-empty p {
+    margin-bottom: 1.5rem;
+}
+
+.btn-shopping {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+/* 🎨 Continue shopping button hover */
+.btn-shopping:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+
+  .cart-summary {
+    position: static; /* Remove sticky positioning on mobile */
+    margin-top: 2rem;
+  }
+
+  .cart-item {
+      flex-wrap: wrap; /* Allow items to wrap within the card */
+      text-align: center;
+      justify-content: center;
+  }
+
+  .item-image, .item-details, .item-total, .item-actions {
+      flex-basis: 100%; /* Each takes full width */
+      text-align: center;
+  }
+
+  .item-total {
+      order: 1; /* Move total above other details on mobile */
+      margin-bottom: 1rem;
+  }
+
+  .item-image {
+      margin-bottom: 1rem;
+  }
+
+  .remove-btn {
+      position: absolute; /* Position remove button absolutely */
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+    .cart-container h2 {
+        font-size: 2rem;
+    }
+
+    .cart-item {
+        padding: 1rem;
+    }
+
+    .item-image img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item-details h3 {
+        font-size: 1.2rem;
+    }
+
+    .item-total p {
+        font-size: 1.1rem;
+    }
+}

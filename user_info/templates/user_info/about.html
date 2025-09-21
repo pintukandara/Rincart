@@ -1,0 +1,40 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block extra_head %}
+<link rel = "stylesheet" href = "{% static "user_info/about.css" %}">
+
+{% endblock extra_head %}
+{% block content %}
+<header>
+        <h1>About Rincart</h1>
+    </header>
+
+    <div class="container">
+        <h2>Our Mission</h2>
+        <p>Rincart is dedicated to providing a seamless online shopping experience, combining simplicity, speed, and reliability. Our goal is to make shopping convenient for everyone, everywhere.</p>
+
+        <h2>Our Vision</h2>
+        <p>We envision a world where online shopping is effortless, enjoyable, and personalized. Rincart strives to deliver top-notch services and maintain the trust of our customers.</p>
+
+        <h2>Meet the Team</h2>
+        <div class="team">
+            <div class="member">
+                <img src="{% static 'user_info/dustin.jpg' %}" alt="Team Member 1">
+
+                <h3>Dustin Harington</h3>
+                <p>Full Stack Developer</p>
+            </div>
+            <div class="member">
+                <img src="{% static 'user_info/millie.jpg' %}" alt="Team Member 1">
+                <h3>Jane Hoper</h3>
+                <p>UI/UX Designer</p>
+            </div>
+            <div class="member">
+                <img src="{% static 'user_info/lucas.jpg' %}" alt="Team Member 1">
+                <h3>Lucas</h3>
+                <p>Backend Developer</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
