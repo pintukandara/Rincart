@@ -568,7 +568,7 @@ def pay_on_delivery(request,product_id):
     
 
 def order_placed_view(request):
-    # if request.user.is_authenticated:
+    if request.user.is_authenticated:
         address = UserAddress.objects.filter(user=request.user).last()
         get_user=request.user
         user_contact = get_object_or_404(SellerProfile,user = request.user)
@@ -577,12 +577,12 @@ def order_placed_view(request):
             'address':address,
             'get_user':get_user,
             'user':user_contact,
-            'order_items':order_items  
+            'order_items':order_items
         }
         return render(request,"user_info/order_placed.html",context)
-    
-    
-        
+
+    return render(request,"user_info/login.html")
+
     # return redirect('payments')
 @login_required
 

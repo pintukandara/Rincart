@@ -6,8 +6,6 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
 from django.core.exceptions import ValidationError
-
-
 import re
 
 from django.core.validators import RegexValidator
