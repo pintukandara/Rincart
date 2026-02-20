@@ -1,1 +1,1 @@
-web: cd My_site && gunicorn My_site.wsgi
+web: cd My_site && gunicorn My_site.wsgi --bind 0.0.0.0:$PORT
