@@ -111,7 +111,7 @@ celery -A My_site worker -l info
 
 ## 🛠️ API Overview
 
-RinCart exposes RESTful APIs via Django REST Framework. You can explore and test endpoints through the browsable API at `http://127.0.0.1:8000/`.
+RinCart exposes Endpints using Djagno. You can explore and test endpoints through the browsable EndPoints at `http://127.0.0.1:8000/`.
 
 ---
 
