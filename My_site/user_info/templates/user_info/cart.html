@@ -1,0 +1,82 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}Your Shopping Cart{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'user_info/cart.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="cart-container">
+  <h2>Your Cart</h2>
+
+  <div class="cart-layout">
+    <div class="cart-items">
+      {% for item in items %}
+      <div class="cart-item">
+        <div class="item-image">
+          <a href="{{ item.product.get_absolute_url }}">
+            {% if item.product.image %}
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}">
+            {% endif %}
+          </a>
+        </div>
+
+        <div class="item-details">
+          <a href="{{ item.product.get_absolute_url }}">
+            <h3>{{ item.product.title }}</h3>
+          </a>
+          <p class="item-price">Unit Price: ₹{{ item.product.price }}</p>
+          <p class="item-quantity">Quantity: {{ item.quantity }}</p>
+        </div>
+
+        <div class="item-total">
+          {# ✨ Suggestion: Add a method to your model to calculate this #}
+          <p>Total: ₹{{ item.get_total_price }}</p>
+        </div>
+        <form method="POST" action="{% url 'address' item.product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="checkout-btn">Buy Now</button>
+                        </form>
+
+        <div class="item-actions">
+          {# ✨ Suggestion: Add a "Remove from Cart" feature #}
+          <form action="{% url 'remove_from_cart' item.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="remove-btn" title="Remove Item">×</button>
+          </form>
+        </div>
+      </div>
+      {% empty %}
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+        <a href="{% url 'buy' %}" class="btn-shopping">Continue Shopping</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    {# ✨ Suggestion: Add a cart summary if items exist #}
+    {% if items %}
+    <div class="cart-summary">
+      <h3>Cart Summary</h3>
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <span>₹{{ total_price }}</span>
+      </div>
+      <div class="summary-line">
+        <span>Shipping</span>
+        <span>FREE</span>
+      </div>
+      <hr>
+      <div class="summary-total">
+        <span>Total</span>
+        <span>₹{{ total_price }}</span>
+      </div>
+       <form method="GET" action="{% url 'all-checkout'%}">
+                            {% csrf_token %}
+                            <button type="submit" class="checkout-btn">Proceed To Checkout</button>
+                        </form>  
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

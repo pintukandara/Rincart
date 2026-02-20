@@ -1,0 +1,55 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}Buy anything You want At Minimal Prices{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'user_info/buy.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="product-container">
+    {% if products %}
+        {% for product in products %}
+            {# Hide products posted by the logged-in user #}
+            {% if request.user != product.posted_by %}
+                <article class="product-card">
+                    <a href="{{ product.get_absolute_url }}">
+                        <h2 class="title">{{ product.title }}</h2>
+                        <p class="description">{{ product.description|truncatewords:20 }}</p>
+                        <p class="price">Price: ₹{{ product.price }}</p>
+                        <p class="category">Category: {{ product.category }}</p>
+
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.title }}" width="200">
+                        {% endif %}
+                    </a>
+                    
+                    
+                    <p class = "posted-by">Posted By:
+                        {% if product.posted_by.seller_profile.slug %}
+                        <a href = "{% url 'seller_profile' product.posted_by.seller_profile.slug %}">{{ product.posted_by.username}}</a>
+                        {% else %}
+                        {{product.posted_by.username}}
+                        {% endif %}
+
+
+                    <div class="actions">
+                        <form method="POST" action="{% url 'address' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="buy-btn">Buy Now</button>
+                        </form>
+
+                        <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="cart-btn">Add to Cart</button>
+                        </form>
+                    </div>
+                </article>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+</div>
+{% endblock content %}

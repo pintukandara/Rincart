@@ -1,0 +1,213 @@
+{% extends "user_info/base.html" %} 
+{% load static %} 
+{% block title %} {% endblock title %} 
+{% block extra_head %} 
+<link rel = 'stylesheet' href = "{% static "user_info/home2.css" %}"> 
+{% endblock extra_head %} 
+{% block content %}
+<header class="header-part">
+  <!-- Hero Header Title -->
+  <div class="header__title">
+    <div class="header__text">
+      <h1>
+        Uncover Hidden <span class="highlight">Gems</span> &<br />
+        <span class="highlight">Deals:</span>
+        <span class="highlight">RinCart,</span>
+      </h1>
+      <h4>Where Old Finds New Purpose.</h4>
+      <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+    </div>
+
+    <div class="header__image-container">
+      <img
+        src="/static/user_info/buyimg.jpg"
+        class="header__img"
+        alt="Buy & sell items"
+      />
+    </div>
+  </div>
+</header>
+
+<main class="page-content">
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <hr />
+
+  <!-- Features Section (This will now be clearly below the header) -->
+  <section class="section" id="section--1">
+    <div class="section__title">
+      <h2 class="section__description">Features</h2>
+      <h3 class="section__header">
+        Everything you need to buy and sell pre-owned items with confidence.
+      </h3>
+    </div>
+
+    <div class="features">
+      <!-- Feature 1 -->
+      <img
+        src="/static/user_info/generated-image.png"
+        data-src = "/static/user_info/lazy1.png"
+        alt="Browse Items"
+        class="lazy-img"
+      />
+      <div class="features__feature">
+        <div class="features__icon">
+          <svg>
+            <use xlink:href="/static/user_info/img/icons.svg#icon-search"></use>
+          </svg>
+        </div>
+        <h5 class="features__header">Browse Thousands of Listings</h5>
+        <p>
+          Discover pre-loved books, gadgets, clothing, and more from real users
+          near you.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="features__feature">
+        <div class="features__icon">
+          <svg>
+            <use xlink:href="/static/user_info/img/icons.svg#icon-upload"></use>
+          </svg>
+        </div>
+        <h5 class="features__header">List Your Products for Free</h5>
+        <p>
+          Upload your own listings easily. Add images, descriptions, and pricing
+          in minutes — no fees.
+        </p>
+      </div>
+      <img
+        src="/static/user_info/list.png"
+        data-src = "/static/user_info/lazy2.png"
+        alt="List Items"
+        class="lazy-img"
+        
+      />
+
+      <!-- Feature 3 -->
+      <img
+        src="/static/user_info/chat.png"
+        data-src = "/static/user_info/lazy3.png"
+        alt="Messaging"
+        class="lazy-img"
+      />
+      <div class="features__feature">
+        <div class="features__icon">
+          <svg>
+            <use
+              xlink:href="/static/user_info/img/icons.svg#icon-message-square"
+            ></use>
+          </svg>
+        </div>
+        <h5 class="features__header">Chat Before You Buy</h5>
+        <p>
+          Contact sellers directly through our secure chat system. Negotiate and
+          arrange meetups safely.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+<br />
+<br />
+<br />
+<br />
+<hr />
+
+<section class="section" id="section--2">
+  <div class="section__title section__title--testimonials">
+    <h2 class="section__description">Not sure yet?</h2>
+    <h3 class="section__header">
+      Millions of Customers are already making their lifes simpler.
+    </h3>
+  </div>
+
+  <div class="slider">
+    <div class="slide">
+      <div class="testimonial">
+        <h5 class="testimonial__header">Best shopping decision ever!</h5>
+        <blockquote class="testimonial__text">
+          "I was a bit skeptical before ordering, but honestly, this has been
+          one of the smoothest shopping experiences I’ve had. The website is
+          super easy to navigate, the checkout process was quick, and my order
+          arrived in perfect condition. The packaging was neat and secure, and
+          the product itself was even better than what I expected. Customer
+          support also followed up to ensure I was satisfied, which really shows
+          they care about their customers. Overall, I’m really impressed and
+          will definitely be ordering again!"
+        </blockquote>
+        <address class="testimonial__author">
+          <img
+            src="{% static 'user_info/dustin.jpg' %}"
+            alt="Team Member 1"
+            class="testimonial__photo"
+          />
+          <h6 class="testimonial__name">Dustin Handerson</h6>
+          <p class="testimonial__location">Hawkins, USA</p>
+        </address>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="testimonial">
+        <h5 class="testimonial__header">
+          The last step to becoming a complete minimalist
+        </h5>
+        <blockquote class="testimonial__text">
+          "I can confidently say this is one of the best experiences I’ve had
+          shopping online. The entire process felt smooth and stress-free, from
+          searching for what I needed to completing my purchase. I really
+          appreciate how the platform provides detailed information, making it
+          easy to choose. The delivery came right on time, and the product was
+          exactly as described. I also reached out to customer care with a small
+          query, and they responded quickly and politely, solving my issue
+          within minutes. This level of service makes a huge difference, and
+          I’ll definitely keep coming back here."
+        </blockquote>
+        <address class="testimonial__author">
+          <img
+            src="{% static 'user_info/millie.jpg' %}"
+            alt="Team Member 1"
+            class="testimonial__photo"
+          />
+          <h6 class="testimonial__name">Millie Boby Brown</h6>
+          <p class="testimonial__location">NewYork, New York State</p>
+        </address>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="testimonial">
+        <h5 class="testimonial__header">Finally free from old-school Ecommerce websites</h5>
+        <blockquote class="testimonial__text">
+          "The service was really good, and I found exactly what I was looking
+          for. The browsing and selection process was simple, and the
+          descriptions were clear enough to make a confident choice. The
+          delivery did take a day longer than expected, but the wait was worth
+          it because the product was in excellent condition. What I liked most
+          was how affordable it was compared to other places. With just a little
+          improvement on delivery speed, this would be a 5-star experience.
+          Still, highly recommended for anyone looking for quality and value."
+        </blockquote>
+        <address class="testimonial__author">
+          <img
+            src="{% static 'user_info/lucas.jpg' %}"
+            alt="Team Member 1"
+            class="testimonial__photo"
+          />
+          <h6 class="testimonial__name">Lucas Charles Sinclair</h6>
+          <p class="testimonial__location">Hawkins,US</p>
+        </address>
+      </div>
+    </div>
+
+    <button class="slider__btn slider__btn--left">&larr;</button>
+    <button class="slider__btn slider__btn--right">&rarr;</button>
+    <div class="dots"></div>
+  </div>
+</section>
+<script src="{% static 'user_info/home.js' %}"></script>
+{% endblock content %}

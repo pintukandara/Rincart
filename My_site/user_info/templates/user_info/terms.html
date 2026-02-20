@@ -1,0 +1,38 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}Terms and Conditions{% endblock title %}
+<link rel = 'stylesheet' href = "{% static "user_info/terms.css" %}">
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-2xl mt-10">
+  <h1 class="text-3xl font-bold mb-6 text-center">Terms and Conditions</h1>
+  <p class="mb-4 text-gray-600">Welcome to RinCart! By accessing or using our website, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">1. Acceptance of Terms</h2>
+  <p class="mb-4 text-gray-600">By using RinCart, you confirm that you are at least 18 years old or accessing under the supervision of a parent or legal guardian. If you do not agree with these terms, please do not use our services.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">2. User Accounts</h2>
+  <p class="mb-4 text-gray-600">You are responsible for maintaining the confidentiality of your account and password. Any activity under your account will be considered your responsibility.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">3. Orders and Payments</h2>
+  <p class="mb-4 text-gray-600">All orders placed are subject to availability and confirmation. Payments must be completed through the approved methods listed on our website.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">4. Cancellations and Refunds</h2>
+  <p class="mb-4 text-gray-600">You may cancel your order before it is shipped/processed. Refunds (if applicable) will be initiated based on our refund policy.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">5. Use of Website</h2>
+  <p class="mb-4 text-gray-600">You agree not to misuse RinCart, including attempting to hack, copy, or redistribute our content without permission.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">6. Intellectual Property</h2>
+  <p class="mb-4 text-gray-600">All content, trademarks, and design on RinCart are owned by us and may not be used without prior written consent.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">7. Limitation of Liability</h2>
+  <p class="mb-4 text-gray-600">RinCart will not be held liable for any indirect, incidental, or consequential damages arising from the use of our services.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">8. Changes to Terms</h2>
+  <p class="mb-4 text-gray-600">We reserve the right to update or change these terms at any time. Continued use of RinCart means you accept any changes.</p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">9. Contact Us</h2>
+  <p class="mb-4 text-gray-600">If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:support@rincart.com" class="text-blue-600 underline">support@rincart.com</a>.</p>
+</div>
+{% endblock %}

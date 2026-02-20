@@ -1,0 +1,18 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+
+{% block title %}Create profile as a seller{% endblock title %}
+{% block extra_head %}
+<link rel = 'stylesheet' href = "{% static "user_info/sellerCreate.css" %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="profile-container">
+    <form method = "POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type = "submit" class = "btn-save">Save</button>
+    </form>
+    
+</div>
+{% endblock content %}

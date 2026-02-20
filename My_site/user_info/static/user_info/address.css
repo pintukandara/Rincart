@@ -1,0 +1,165 @@
+/* --- General Page Styling --- */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Main Container for Split Layout --- */
+.checkout-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* --- Product Display Section (Left Side) --- */
+.product-summary {
+    flex-basis: 45%;
+    background: #f9f9f9;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-summary img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-summary .product_title {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.product-summary .product_category {
+    background-color: #e7eaf6;
+    color: #3a4163;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.product-summary .product_description {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.product-summary .product_price {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #e74c3c;
+    margin-top: auto; /* Pushes the price to the bottom */
+}
+
+/* --- Address Form Section (Right Side) --- */
+.address-form {
+    flex-basis: 55%;
+    padding: 40px;
+}
+
+.address-form h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Styling for Django form fields rendered with form.as_p */
+.address-form form p {
+    margin-bottom: 20px;
+}
+
+.address-form form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.address-form form input[type="text"],
+.address-form form input[type="email"],
+.address-form form input[type="tel"],
+.address-form form select,
+.address-form form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.address-form form input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* --- Button Styling --- */
+.form-buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #3498db;
+    border: 2px solid #3498db;
+}
+.btn-secondary:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 992px) {
+    .checkout-container {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .product-summary, .address-form {
+        flex-basis: 100%;
+    }
+}

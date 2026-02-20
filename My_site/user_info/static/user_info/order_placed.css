@@ -1,0 +1,234 @@
+/* =================================
+   Global Styles & Typography
+   ================================= */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f7fa; /* A light, clean background */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.content-wrapper {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* Page Header */
+.order-confirmation {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #34495e;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 0 0 8px 0;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* =================================
+   Layout Grid
+   ================================= */
+.order-details-grid {
+    display: grid;
+    /* Two columns: a smaller one for the address and a larger one for items */
+    grid-template-columns: 1fr 2.5fr;
+    gap: 30px;
+}
+
+/* =================================
+   Card Styles
+   ================================= */
+.card,
+.items-purchased-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+    text-align: left;
+}
+
+.shipping-address-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+/* =================================
+   Items Purchased Section
+   ================================= */
+.order-id {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    border-bottom: none;
+    margin-bottom: 15px;
+}
+
+.summary-details {
+    background-color: #f8f9fa;
+    border-left: 5px solid #3498db;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+}
+
+.summary-details p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.product-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 25px;
+    border-top: 1px solid #ecf0f1;
+}
+
+/* This makes sure the first product card doesn't have a top border */
+.product-card:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.product-info .title a {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.product-info .price {
+    font-weight: bold;
+    color: #16a085;
+    font-size: 1.15rem;
+    margin: 8px 0;
+}
+
+.product-info .seller {
+    font-size: 0.95rem;
+    color: #95a5a6;
+}
+
+/* =================================
+   Interactive Elements
+   ================================= */
+.cancel-order {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.cancel-order:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* =================================
+   Message Alert Box
+   ================================= */
+.message-alert {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 10px 25px;
+    border-radius: 8px;
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    text-align: center;
+}
+
+.message-alert p {
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* =================================
+   Responsive Design
+   ================================= */
+/* For Tablets */
+@media (max-width: 992px) {
+    .order-details-grid {
+        grid-template-columns: 1fr; /* Stack the columns on top of each other */
+    }
+
+    .order-confirmation {
+        font-size: 2.4rem;
+    }
+}
+
+/* For Mobile Phones */
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+
+    .card,
+    .items-purchased-card {
+        padding: 20px;
+    }
+
+    .order-confirmation {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .product-card {
+        flex-direction: column; /* Stack image on top of info */
+        align-items: flex-start; /* Align content to the left */
+    }
+
+    .product-image {
+        width: 100%;
+        height: 180px;
+    }
+}

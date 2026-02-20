@@ -1,0 +1,78 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}Payments{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'user_info/payments.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="payment-container">
+
+    <main class="main-content">
+        <section class="card shipping-address-card">
+            <h2>Shipping Address</h2>
+            <p class="address-details">{{ address }}</p>
+        </section>
+
+        <section class="card payment-card">
+            <h1>Confirm and Pay</h1>
+            {% if user.is_authenticated %}
+                <button id="rzp-button1">Pay with Razorpay</button> 
+                <form method = "POST" action = "{% url "pay-on-delivery" product.id %}">
+                    {% csrf_token %}
+                <button id ="cash-on-delivery">Pay On delivery</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}?next={% url 'payments' product.id %}" class="login-to-buy-btn">
+                    Login to Buy
+                </a>
+            {% endif %}
+        </section>
+    </main>
+
+    <aside class="order-summary">
+        <article class="card order-summary-card">
+            <h2>Order Summary</h2>
+
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
+            {% endif %}
+            
+            <h3 class="title">{{ product.title }}</h3>
+            <p class="description">{{ product.description }}</p>
+            <p class="price">Price: ₹{{ product.price }}</p>
+            <p class="category">Category: {{ product.category }}</p>
+            
+            <p class="posted-by">
+                Sold By:
+                {% if product.posted_by.is_authenticated and product.posted_by.seller_profile %}
+                    <a href="{% url 'seller_profile' product.posted_by.seller_profile.slug %}">
+                        {{ product.posted_by.username }}
+                    </a>
+                {% else %}
+                    {{ product.posted_by.username }}
+                {% endif %}
+            </p>
+        </article>
+    </aside>
+
+</div>
+
+<p class="debug-info">DEBUG: Razorpay Key → {{ razorpay_key_id }} | Amount → {{ amount }}</p>
+
+<script>
+    window.razorpayConfig = {
+        key: "{{ razorpay_key_id }}",
+        amount: "{{ amount }}",
+        order_id: "{{ razorpay_order_id }}",
+        callback_url: "{{ razorpay_callback_url }}",
+        user_name: "{{ user.get_full_name|default:user.username }}",
+        user_email: "{{ user.email }}",
+    };
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="{% static 'user_info/payments.js' %}"></script>
+
+{% endblock content %}

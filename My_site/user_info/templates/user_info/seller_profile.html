@@ -1,0 +1,27 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}{{ seller_profile.user.username }}{% endblock title %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'user_info/seller_info.css' %}">
+{% endblock extra_head %}
+{% block content %}
+
+<div class="profile-card">
+    <h1>Welcome Buddy!</h1>
+
+    {% if seller_profile.profile_picture %}
+        <img src="{{ seller_profile.profile_picture.url }}" alt="{{ seller_profile.user }}" width = 200>
+    {% else %}
+        <img src="{% static 'user_info/default.png' %}" alt="Default Profile Picture">
+    {% endif %}
+
+    <h2>{{ seller_profile.user }}</h2>
+
+    <h3>About Me</h3>
+    <p>{{ seller_profile.bio|default:"This seller hasn’t added a bio yet." }}</p>
+
+    <p><strong>Mobile:</strong> {{ seller_profile.mobile }}</p>
+    <p><strong>Address:</strong> {{ seller_profile.address }}</p>
+</div>
+
+{% endblock %}

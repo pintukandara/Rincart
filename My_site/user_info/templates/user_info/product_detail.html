@@ -1,0 +1,43 @@
+{% extends "user_info/base.html" %}
+{% load static %}
+{% block title %}{% endblock title %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'user_info/detail.css' %}">
+{% endblock extra_head %}
+{% block content %}
+
+<article class="product-card">
+    <h2 class="title">{{ identified_product.title }}</h2>
+    
+    {% if identified_product.image %}
+        <img src="{{ identified_product.image.url }}" alt="{{ identified_product.name }}" width="150">
+    {% endif %}
+    
+    <p class="description">{{ identified_product.description }}</p>
+    <p class="price">Price: ₹{{ identified_product.price }}</p>
+    <p class="category">Category: {{ identified_product.category }}</p>
+    
+    <p class="posted-by">Posted By:
+        {% if identified_product.posted_by.is_authenticated and identified_product.posted_by.seller_profile %}
+            <a href="{% url 'seller_profile' identified_product.posted_by.seller_profile.slug %}">
+                {{ identified_product.posted_by.username }}
+            </a>
+        {% else %}
+            {{ identified_product.posted_by.username }}
+        {% endif %}
+    </p>
+
+    <!-- ✅ Buy Now Button -->
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'address' identified_product.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Buy Now</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}?next={% url 'buy' identified_product.id %}" class="btn btn-primary">
+            Login to Buy
+        </a>
+    {% endif %}
+</article>
+
+{% endblock content %}
