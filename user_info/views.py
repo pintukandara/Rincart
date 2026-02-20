@@ -1,6 +1,7 @@
 from .forms import UserRegistrationForm, OTPForm, ProductForm, AddressForm, SellerProfileForm, PasswordResetForm
 from .models import userInfo, Product, Cart, CartItems, SellerProfile, Order, UserAddress, OrderItems
 from django.contrib.auth.tokens import PasswordResetTokenGenerator, default_token_generator
+from .tasks import send_verification_code,password_reset_request,send_message_to_pintu,order_confirmation
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -36,13 +37,7 @@ def registration_view(request):
             request.session['otp'] = otp
             request.session['otp_timestamp'] = time.time()
             request.session['user_email'] = user_email
-            send_mail(
-                'Your OTP Code',
-                f'Thank You For Registration \n Your OTP for Verification is: {otp}',
-                'pintukandara124@gmail.com',
-                [user_email],
-                fail_silently=False
-            )
+            send_verification_code.delay(user_email,otp)
 
             return redirect('verify_otp')
     else:
@@ -126,13 +121,7 @@ def update_password(request):
                         'uidb64': uidb64, 'token': token})
             )
             print(f"Full Reset URL: {reset_url}")
-            send_mail(
-                'Password Reset Request',
-                f'Hi {get_user.username},\n\nPlease click the link below to reset your password:\n{reset_url}\n\nIf you did not request this, please ignore this email.',
-                'pintukandara124@gmail.com',
-                [get_useremail],
-                fail_silently=False
-            )
+            password_reset_request.delay(get_useremail,get_user.username,reset_url)
 
     return render(request, "user_info/update_password.html")
 
@@ -350,13 +339,7 @@ def send_message(request):
             messages.error(request, "Please enter a valid email address.")
             return redirect('help')
         try:
-            send_mail(
-                subject=f"New message from {email}",
-                message=msg,
-                from_email=email,
-                recipient_list=["pintukandara124@gmail.com"],
-                fail_silently=False
-            )
+            send_message_to_pintu.delay(email,msg)
             messages.success(request, "message sent successfully!")
         except Exception as e:
             messages.error(request, f"Something went wrong!{e}")
@@ -540,15 +523,7 @@ def pay_on_delivery(request,product_id):
                 order.status = "SUCCESS"
                 order.save()
                 messages.success(request,"your order has been placed successfully with Cash on Delivery")
-                send_mail(
-            'Order Confirmation',
-            f'Congratulations {get_user.username},\n\n'
-            f'Your order has been placed for {product.title} and will be delivered to '
-            f'{address.city}, {address.pincode} within 6-7 days.\n',
-            'pintukandara124@gmail.com',
-            [get_user.email],
-            fail_silently=False   
-        )
+                order_confirmation.delay(get_user.username,get_user.email,product.title,address.city,address.pincode)
                 
             else :
                 messages.error(request,"Something went wrong")
