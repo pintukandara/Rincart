@@ -74,7 +74,7 @@ pip install -r requirements.txt
 
 ### 4️⃣ Configure the Database
 
-Make sure PostgreSQL is running and update your database credentials in `settings.py`:
+Make sure PostgreSQL is running and update your database credentials in `settings.py` If you'r Using One:
 
 ```python
 DATABASES = {
