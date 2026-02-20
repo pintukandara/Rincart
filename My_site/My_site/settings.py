@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-%ler7$d%!p6=%2g+-ha+^&3$^)7a8re^pe^djfmkhu69+p5!l+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.railway.app']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -160,3 +160,8 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://rincart-production.up.railway.app",
+]
