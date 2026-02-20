@@ -19,14 +19,14 @@ The project is developed using Django, Django REST Framework, PostgreSQL, and fr
 
 📊 Admin Panel for Product & Order Managemen
 
-🗄️ PostgreSQL Database Integration
+🗄️ SQLite3 Integrated
 
 
 Backend
 
 Python
 Django
-Django REST Framework
+
 
 Frontend
 
@@ -55,3 +55,19 @@ RinCart/
 1️⃣ Clone the Repository
 git clone https://github.com/your-username/rincart.git
 cd rincart
+
+
+create your virtual enviroment
+
+python -m venv myenv
+
+install all the necessary packeges from requirements.txt
+
+pip install -r requirements.txt
+
+start your project
+
+python manage.py runserver
+
+start celery worker
+celery -A My_site worker -l info
