@@ -109,7 +109,7 @@ def update_password(request):
         print(get_useremail)
         # print(get_user)
         try:
-            get_user = User.objects.get(email=get_useremail)
+            get_user = User.objects.filter(email=get_useremail).first()
         except User.DoesNotExist:
             get_user = None
 
@@ -400,7 +400,8 @@ def payments_view(request, product_id):
         'payment_capture': '1'
     }
 
-    # Create Razorpay order
+# abbi order create karna hai
+
     razorpay_order = client.order.create(data=order_data)
 
     # Save order in DB (pending status initially)

@@ -146,7 +146,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'pintukandara124@gmail.com'
-EMAIL_HOST_PASSWORD = 'desr vjoj vzan eayq'  # Not your normal password
+EMAIL_HOST_PASSWORD = 'fpvo lggu aepy eyzu'
 # settings.py
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'  # will hit homepage_view
@@ -154,4 +154,8 @@ LOGIN_REDIRECT_URL = '/'  # will hit homepage_view
 RAZORPAY_KEY_ID = "rzp_test_RAiohfXhpUHV59"
 RAZORPAY_KEY_SECRET = "dyqmv5P20iux6SGVWVwPx2gu"
 RAZORPAY_CALLBACK_URL = "http://127.0.0.1:8000/payment/success/"
+
+CELERY_TIMEZONE = "Asia/Kolkata"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 
