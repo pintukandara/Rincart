@@ -1,0 +1,1 @@
+web: cd My_site && gunicorn My_site.wsgi
